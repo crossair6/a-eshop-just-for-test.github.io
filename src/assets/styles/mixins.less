@@ -1,0 +1,110 @@
+// 鼠标经过上移阴影动画
+.hoverShadow () {
+    transition: all .3s;
+
+    &:hover {
+        transform: translate3d(0px, -20px, 0px);
+        box-shadow: 0 40px 20px rgba(0, 0, 0, 0.2);
+    }
+}
+
+// 骨架屏离开时的淡出动画
+.fade {
+    &-leave {
+        &-active {
+            position: absolute;
+            width: 100%;
+            transition: opacity 1s 0.2s;
+            z-index: 1;
+        }
+
+        &-to {
+            opacity: 0;
+        }
+    }
+}
+
+// 面包屑从右侧淡入和向右侧淡出的效果
+.fade-right {
+    &-enter {
+        &-from {
+            transform: translateX(100px);
+            opacity: 0;
+        }
+
+        &-active {
+            transition: all 0.7s;
+        }
+
+        &-to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    &-leave {
+        &-from {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        &-active {
+            transition: all 0.7s;
+        }
+
+        &-to {
+            transform: translateX(100px);
+            opacity: 0;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 演示混入
+
+// 1.1普通的类
+.abc {
+    width: 100px;
+    height: 100px;
+}
+
+// 1.2 abc会编译
+.box {
+    .abc()
+}
+
+// 2.1 less函数
+.abc2(@width) {
+    width: @width;
+    height: @width;
+}
+
+// 2.2 abc2不会编译,推荐
+.box2 {
+    .abc2(300px)
+}
